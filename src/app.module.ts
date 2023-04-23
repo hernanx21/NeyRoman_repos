@@ -1,6 +1,11 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { OrganizationModule } from './organization/organization.module';
+import { TribeModule } from './tribe/tribe.module';
+import { RepositoryModule } from './repository/repository.module';
+import { MetricModule } from './metrics/metrics.module';
+import { CsvModule } from './csv/csv.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -15,8 +20,13 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       synchronize: false,
       retryDelay: 3000,
       retryAttempts: 10,
-      logging: true,
+      logging: false,
     }),
+    OrganizationModule,
+    TribeModule,
+    RepositoryModule,
+    MetricModule,
+    CsvModule,
   ],
   controllers: [],
   providers: [],
