@@ -149,7 +149,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Tribu apertura\",\r\n    \"status\": 1,\r\n    \"organization\": 1\r\n}"
+							"raw": "{\r\n    \"name\": \"Tribu apertura - Matriz\",\r\n    \"status\": 1,\r\n    \"organization\": 1\r\n}"
 						},
 						"url": {
 							"raw": "http://localhost:3000/api/tribe",
@@ -246,6 +246,45 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Get Repo with Optional Filters (fecha, estado y porcentaje.)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/repository/query?percentage=95&fromDate=2023-04-22&toDate=2023-05-22&state=E",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"repository",
+								"query"
+							],
+							"query": [
+								{
+									"key": "percentage",
+									"value": "95"
+								},
+								{
+									"key": "fromDate",
+									"value": "2023-04-22"
+								},
+								{
+									"key": "toDate",
+									"value": "2023-05-22"
+								},
+								{
+									"key": "state",
+									"value": "E"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -258,7 +297,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/metric/4",
+							"raw": "http://localhost:3000/api/metric/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -267,7 +306,7 @@
 							"path": [
 								"api",
 								"metric",
-								"4"
+								"1"
 							]
 						}
 					},
@@ -298,6 +337,34 @@
 							"path": [
 								"api",
 								"metric"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DowloadCsv",
+			"item": [
+				{
+					"name": "Download CSV",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/csv/download/tribe/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"csv",
+								"download",
+								"tribe",
+								"1"
 							]
 						}
 					},
