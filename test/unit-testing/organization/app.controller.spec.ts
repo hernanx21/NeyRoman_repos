@@ -45,7 +45,7 @@ describe('Organization Controller testing', () => {
     expect(await organizationController.create(organizationDto)).toBe(expectedResult);
   });
 
-  it('It should return a organization that was updated if succeful', async () => {
+  it('It should throw http exception denoting that an organization was updated', async () => {
     let organizationDto = new UpdateOrganizationDto();
     let organizationId = 1;
     let expectedResult = HttpException(`Organización ${organizationId} actualizada.`, HttpStatus.OK);
@@ -55,7 +55,7 @@ describe('Organization Controller testing', () => {
     expect(await organizationController.update(organizationId, organizationDto)).toBe(expectedResult);
   });
 
-  it('It should return a organization that was deleted if succeful', async () => {
+  it('It should throw http exception denoting that an organization was deleted', async () => {
     let organizationId = 1;
     let expectedResult = HttpException(`Organización ${organizationId} eliminada.`, HttpStatus.OK);
 
