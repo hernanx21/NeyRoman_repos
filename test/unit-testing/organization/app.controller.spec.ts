@@ -6,7 +6,7 @@ import { CreateOrganizationDto } from 'src/organization/dtos/create-organization
 import { UpdateOrganizationDto } from 'src/organization/dtos/update-organization.dto';
 jest.mock('../../../src/organization/services/organization.service');
 
-describe('Metric Controller', () => {
+describe('Organization Controller testing', () => {
   let organizationController: OrganizationController;
   let organizationService: OrganizationService;
   let HttpException = jest.fn();
