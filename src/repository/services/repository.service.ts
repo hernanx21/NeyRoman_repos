@@ -1,6 +1,6 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { TribeService } from '../../../src/tribe/services/tribe.service';
+import { TribeService } from 'src/tribe/services/tribe.service';
 import { Repository } from 'typeorm';
 import { CreateRepositoryDto } from '../dtos/create-repository.dto';
 import { RepositoryEntity } from '../entity/repository.entity';
@@ -50,15 +50,14 @@ export class RepositoryService {
        return findRepository;
     }
 
-    /*async findRepoByQuery(state: string, percentage: number, fromDate: Date, toDate: Date, id: number) {
-        const queryBuilder = this.repositoryRepository.createQueryBuilder('repository');
-        queryBuilder.where('repository.id = :id', { id });
+    async findRepoByQuery(state: string, percentage: number, fromDate: Date, toDate: Date) {
+        const queryBuilder = this.repositoryRepository.createQueryBuilder('repository').leftJoinAndSelect('repository.metric', 'metric');
 
         if (state) {
             queryBuilder.andWhere('repository.state = :state', { state });
         }
         if (percentage) {
-            queryBuilder.andWhere('repository.metric.percentage = :percentage', { percentage });
+            queryBuilder.andWhere('metric.coverage = :percentage', { percentage });
         }
         if (fromDate) {
             queryBuilder.andWhere('repository.create_time >= :fromDate', { fromDate });
@@ -69,6 +68,6 @@ export class RepositoryService {
         const repositories = await queryBuilder.getMany();
 
         return repositories;
-    }*/
+    }
     
 }

@@ -54,4 +54,15 @@ describe('Repository Controller testing', () => {
 
     expect(await repositoryController.getTribeById(repositoryId)).toBe(expectedResult);
   });
+
+  it('It should return a repository with its metrics by filters', async () => {
+    let expectedArray: RepositoryEntity[] = [];
+    let expectedResult = {
+      "repositories": []
+    };
+
+    jest.spyOn(repositoryService, 'findRepoByQuery').mockResolvedValue(expectedArray);
+
+    expect(await repositoryController.findRepoQuery('E', 100, new Date(), new Date())).toStrictEqual(expectedResult);
+  });
 });
