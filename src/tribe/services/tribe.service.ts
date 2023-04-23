@@ -90,7 +90,7 @@ export class TribeService {
     });
     if ([0].includes(listRepositories.length || 0))
       throw new HttpException(
-        `'La Tribu ${id} no tiene repositorios que cumplan con la cobertura necesaria.`,
+        `'La Tribu no tiene repositorios que cumplan con la cobertura necesaria`,
         HttpStatus.ACCEPTED,
       );
       
